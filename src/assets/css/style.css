@@ -1,16 +1,27 @@
 .login_form {
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 150px;
   border: 2px black dotted;
   padding: 10px;
   margin: auto;
 }
 
 .form-group {
-  padding: 20px;
+  padding: 5px;
 }
 
 .form-group label {
-  position: relative;
-  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.form-group input {
+  padding: 10px;
+  width: 200px;
+}
+.btn {
+  width: 100px;
+  min-height: 20px;
+  padding: 5px;
+  background-color: rgba(6, 154, 223, 0.986);
+  color: #ffffff;
 }
