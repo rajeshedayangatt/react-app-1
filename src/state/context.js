@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-
+import { reducer } from "./reducer";
 export const AppContext = React.createContext();
 
 class AppProvider extends Component {
   state = {
     number: 10,
-    inc: () => {
-      this.setState({ number: this.state.number + 1 });
+    dispatch: action => {
+      this.setState(state => reducer(state, action));
     }
   };
   render() {
@@ -17,5 +17,4 @@ class AppProvider extends Component {
     );
   }
 }
-
 export default AppProvider;
