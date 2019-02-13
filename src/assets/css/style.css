@@ -1,0 +1,16 @@
+.login_form {
+  width: 300px;
+  height: 200px;
+  border: 2px black dotted;
+  padding: 10px;
+  margin: auto;
+}
+
+.form-group {
+  padding: 20px;
+}
+
+.form-group label {
+  position: relative;
+  margin-left: 20px;
+}
