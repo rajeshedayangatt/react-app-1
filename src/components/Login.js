@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "../assets/css/style.css";
-
+import { connect } from "react-redux";
+import { loginUser } from "../state/actions";
 class Login extends Component {
   constructor() {
     super();
-    this.loginUser = this.loginUser.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.changeInput = this.changeInput.bind(this);
     this.state = {
       email: "",
@@ -12,7 +13,15 @@ class Login extends Component {
     };
   }
 
-  loginUser(e) {
+  handleSubmit(e) {
+    const data = {
+      email: this.state.email,
+      password: this.state.password
+    };
+    console.log(data);
+
+    this.props.loginUser(data);
+    // this.props.history.push("/");
     e.preventDefault();
   }
   changeInput(e) {
@@ -23,7 +32,7 @@ class Login extends Component {
   render() {
     return (
       <div className="login_form">
-        <form onSubmit={this.loginUser}>
+        <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Email</label>
             <input
@@ -51,4 +60,7 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default connect(
+  null,
+  { loginUser }
+)(Login);

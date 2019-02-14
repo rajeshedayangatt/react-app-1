@@ -2,14 +2,18 @@ import React, { Component } from "react";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Home from "./components/Home";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import "./styles.css";
 
 class App extends Component {
   componentWillReceiveProps(props) {
-    conosle.log(123);
+    if (props.status) {
+      toast.success("Your Registeration Was Successfull.Please Click Login");
+    }
   }
 
   render() {
@@ -26,10 +30,19 @@ class App extends Component {
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
           </Switch>
+
+          <ToastContainer autoClose={8000} />
         </div>
       </Router>
     );
   }
 }
-
-export default App;
+const mapStateToProps = (state /*, ownProps*/) => {
+  return {
+    status: state.userReducer.isRegistered
+  };
+};
+export default connect(
+  mapStateToProps,
+  {}
+)(App);
